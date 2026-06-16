@@ -5,7 +5,7 @@ branches = [
     # Главная страница (по умолчанию)
     {
         "id": "index",
-        "name": "автохаусом",
+        "name": "Лида, Космонавтов",
         "is_main": True,
         "phone_display": "+375 (29) 609-57-40",
         "phone_raw": "+375296095740"
@@ -504,8 +504,8 @@ for branch in branches:
     
     # Формируем заголовок страницы
     if branch["is_main"]:
-        title_text = "BUTIKAVTO — Перенаправление на звонок..."
-        desc_text = f"Мы соединяем вас с {branch['name']}. Если вызов не начался автоматически, пожалуйста, нажмите на кнопку ниже."
+        title_text = f"BUTIKAVTO {branch['name']} — Перенаправление на звонок..."
+        desc_text = f"Мы соединяем вас с BUTIKAVTO {branch['name']}. Если вызов не начался автоматически, пожалуйста, нажмите на кнопку ниже."
     else:
         title_text = f"BUTIKAVTO {branch['name']} — Перенаправление на звонок..."
         desc_text = f"Мы соединяем вас с BUTIKAVTO {branch['name']}. Если вызов не начался автоматически, пожалуйста, нажмите на кнопку ниже."
@@ -525,7 +525,7 @@ for branch in branches:
     github_url = "https://zangran.github.io/redirect/"
     if branch["is_main"]:
         full_url = github_url
-        links_list.append(f"Главная (+375296095740): {full_url}")
+        links_list.append(f"{branch['name']} ({branch['phone_raw']}): {full_url}")
     else:
         full_url = f"{github_url}{filename}"
         links_list.append(f"{branch['name']}: {full_url}")
