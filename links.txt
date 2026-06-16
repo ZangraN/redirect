@@ -13,3 +13,7 @@
 Гомель: https://zangran.github.io/redirect/gomel.html
 Брест: https://zangran.github.io/redirect/brest.html
 Минск Корженевского: https://zangran.github.io/redirect/minsk-korzhenevskogo.html
+Мозырь: https://zangran.github.io/redirect/mozyr.html
+Витебск: https://zangran.github.io/redirect/vitebsk.html
+Барановичи Наконечникова: https://zangran.github.io/redirect/baranovichi-nakonechnikova.html
+Барановичи Тельмана: https://zangran.github.io/redirect/baranovichi-telmana.html

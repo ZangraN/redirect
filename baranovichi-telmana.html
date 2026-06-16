@@ -1,160 +1,18 @@
-import os
-
-# Список всех филиалов (включая новые)
-branches = [
-    # Главная страница (по умолчанию)
-    {
-        "id": "index",
-        "name": "автохаусом",
-        "is_main": True,
-        "phone_display": "+375 (29) 609-57-40",
-        "phone_raw": "+375296095740"
-    },
-    # Филиалы
-    {
-        "id": "polotsk",
-        "name": "Полоцк",
-        "is_main": False,
-        "phone_display": "+375 (29) 653-57-34",
-        "phone_raw": "+375296535734"
-    },
-    {
-        "id": "minsk-rudobelskaya",
-        "name": "Минск Рудобельская",
-        "is_main": False,
-        "phone_display": "+375 (29) 610-24-84",
-        "phone_raw": "+375296102484"
-    },
-    {
-        "id": "pinsk",
-        "name": "Пинск",
-        "is_main": False,
-        "phone_display": "+375 (44) 703-12-83",
-        "phone_raw": "+375447031283"
-    },
-    {
-        "id": "lida-yodki",
-        "name": "Лида, Ёдки",
-        "is_main": False,
-        "phone_display": "+375 (29) 641-80-86",
-        "phone_raw": "+375296418086"
-    },
-    {
-        "id": "mogilev-movchanskogo",
-        "name": "Могилёв Мовчанского",
-        "is_main": False,
-        "phone_display": "+375 (29) 641-97-70",
-        "phone_raw": "+375296419770"
-    },
-    {
-        "id": "borisov",
-        "name": "Борисов",
-        "is_main": False,
-        "phone_display": "+375 (29) 641-91-48",
-        "phone_raw": "+375296419148"
-    },
-    {
-        "id": "mogilev-gabrovskaya",
-        "name": "Могилев Габровская",
-        "is_main": False,
-        "phone_display": "+375 (44) 557-13-07",
-        "phone_raw": "+375445571307"
-    },
-    {
-        "id": "grodno-tavlaya",
-        "name": "Гродно Тавлая",
-        "is_main": False,
-        "phone_display": "+375 (44) 519-46-50",
-        "phone_raw": "+375445194650"
-    },
-    {
-        "id": "orsha",
-        "name": "Орша",
-        "is_main": False,
-        "phone_display": "+375 (29) 318-93-28",
-        "phone_raw": "+375293189328"
-    },
-    {
-        "id": "molodechno",
-        "name": "Молодечно",
-        "is_main": False,
-        "phone_display": "+375 (29) 641-57-75",
-        "phone_raw": "+375296415775"
-    },
-    {
-        "id": "soligorsk",
-        "name": "Солигорск",
-        "is_main": False,
-        "phone_display": "+375 (29) 645-42-63",
-        "phone_raw": "+375296454263"
-    },
-    {
-        "id": "gomel",
-        "name": "Гомель",
-        "is_main": False,
-        "phone_display": "+375 (29) 689-62-93",
-        "phone_raw": "+375296896293"
-    },
-    {
-        "id": "brest",
-        "name": "Брест",
-        "is_main": False,
-        "phone_display": "+375 (29) 374-37-69",
-        "phone_raw": "+375293743769"
-    },
-    {
-        "id": "minsk-korzhenevskogo",
-        "name": "Минск Корженевского",
-        "is_main": False,
-        "phone_display": "+375 (29) 653-86-53",
-        "phone_raw": "+375296538653"
-    },
-    {
-        "id": "mozyr",
-        "name": "Мозырь",
-        "is_main": False,
-        "phone_display": "+375 (44) 592-01-56",
-        "phone_raw": "+375445920156"
-    },
-    {
-        "id": "vitebsk",
-        "name": "Витебск",
-        "is_main": False,
-        "phone_display": "+375 (29) 641-95-39",
-        "phone_raw": "+375296419539"
-    },
-    {
-        "id": "baranovichi-nakonechnikova",
-        "name": "Барановичи Наконечникова",
-        "is_main": False,
-        "phone_display": "+375 (29) 641-81-20",
-        "phone_raw": "+375296418120"
-    },
-    {
-        "id": "baranovichi-telmana",
-        "name": "Барановичи Тельмана",
-        "is_main": False,
-        "phone_display": "+375 (29) 641-92-05",
-        "phone_raw": "+375296419205"
-    }
-]
-
-# HTML Шаблон
-html_template = """<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Отключение автоматического определения номеров телефонов на iOS Safari, чтобы избежать синих ссылок -->
     <meta name="format-detection" content="telephone=no">
-    <title>{title}</title>
+    <title>BUTIKAVTO Барановичи Тельмана — Перенаправление на звонок...</title>
     <!-- Подключаем современные шрифты Outfit и Montserrat для авто-тематики -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
     
     <style>
-        :root {{
+        :root {
             --bg-color-1: #0a0a0c;
             --bg-color-2: #141416;
             --bg-color-3: #050506;
@@ -165,18 +23,18 @@ html_template = """<!DOCTYPE html>
             --card-bg: rgba(25, 25, 28, 0.6);
             --card-border: rgba(227, 6, 19, 0.15);
             --glow-color: rgba(227, 6, 19, 0.35);
-        }}
+        }
 
-        * {{
+        * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
             /* Убираем синюю подсветку при клике на мобильных устройствах */
             -webkit-tap-highlight-color: transparent;
             -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-        }}
+        }
 
-        body {{
+        body {
             font-family: 'Outfit', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
             background: linear-gradient(135deg, var(--bg-color-1) 0%, var(--bg-color-2) 50%, var(--bg-color-3) 100%);
             color: var(--text-main);
@@ -187,10 +45,10 @@ html_template = """<!DOCTYPE html>
             overflow: hidden;
             position: relative;
             padding: 20px;
-        }}
+        }
 
         /* Светящиеся красные сферы на фоне */
-        .blob {{
+        .blob {
             position: absolute;
             width: 350px;
             height: 350px;
@@ -199,28 +57,28 @@ html_template = """<!DOCTYPE html>
             z-index: 1;
             opacity: 0.45;
             animation: float 12s ease-in-out infinite alternate;
-        }}
+        }
 
-        .blob-1 {{
+        .blob-1 {
             top: -80px;
             left: -80px;
             background: radial-gradient(circle, rgba(227, 6, 19, 0.4) 0%, rgba(0,0,0,0) 70%);
-        }}
+        }
 
-        .blob-2 {{
+        .blob-2 {
             bottom: -80px;
             right: -80px;
             background: radial-gradient(circle, rgba(227, 6, 19, 0.25) 0%, rgba(0,0,0,0) 70%);
             animation-delay: -6s;
-        }}
+        }
 
-        @keyframes float {{
-            0% {{ transform: translate(0, 0) scale(1); }}
-            100% {{ transform: translate(40px, 40px) scale(1.15); }}
-        }}
+        @keyframes float {
+            0% { transform: translate(0, 0) scale(1); }
+            100% { transform: translate(40px, 40px) scale(1.15); }
+        }
 
         /* Премиальная карточка в авто-стиле */
-        .card {{
+        .card {
             background: var(--card-bg);
             border: 1px solid var(--card-border);
             backdrop-filter: blur(25px);
@@ -236,17 +94,17 @@ html_template = """<!DOCTYPE html>
             transform: translateY(20px);
             opacity: 0;
             animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-        }}
+        }
 
-        @keyframes fadeInUp {{
-            to {{
+        @keyframes fadeInUp {
+            to {
                 transform: translateY(0);
                 opacity: 1;
-            }}
-        }}
+            }
+        }
 
         /* Фирменный логотип BUTIKAVTO */
-        .brand-logo {{
+        .brand-logo {
             font-family: 'Montserrat', sans-serif;
             font-size: 32px;
             font-weight: 900;
@@ -256,19 +114,19 @@ html_template = """<!DOCTYPE html>
             display: flex;
             align-items: center;
             justify-content: center;
-        }}
+        }
 
-        .logo-butik {{
+        .logo-butik {
             color: #ffffff;
-        }}
+        }
 
-        .logo-avto {{
+        .logo-avto {
             color: var(--accent-red);
             text-shadow: 0 0 15px rgba(227, 6, 19, 0.3);
-        }}
+        }
 
         /* Иконка звонка с анимацией пульсации */
-        .icon-container {{
+        .icon-container {
             width: 84px;
             height: 84px;
             margin: 0 auto 28px;
@@ -280,9 +138,9 @@ html_template = """<!DOCTYPE html>
             align-items: center;
             position: relative;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-        }}
+        }
 
-        .icon-container::before, .icon-container::after {{
+        .icon-container::before, .icon-container::after {
             content: '';
             position: absolute;
             width: 100%;
@@ -291,24 +149,24 @@ html_template = """<!DOCTYPE html>
             border: 1px solid var(--accent-red);
             opacity: 0.6;
             animation: pulse 2.5s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
-        }}
+        }
 
-        .icon-container::after {{
+        .icon-container::after {
             animation-delay: 1.25s;
-        }}
+        }
 
-        @keyframes pulse {{
-            0% {{
+        @keyframes pulse {
+            0% {
                 transform: scale(0.95);
                 opacity: 0.6;
-            }}
-            100% {{
+            }
+            100% {
                 transform: scale(1.6);
                 opacity: 0;
-            }}
-        }}
+            }
+        }
 
-        .icon-container svg {{
+        .icon-container svg {
             width: 32px;
             height: 32px;
             fill: none;
@@ -318,26 +176,26 @@ html_template = """<!DOCTYPE html>
             stroke-linejoin: round;
             filter: drop-shadow(0 0 8px var(--accent-red));
             animation: shake 3s ease-in-out infinite;
-        }}
+        }
 
-        @keyframes shake {{
-            0%, 90%, 100% {{ transform: rotate(0); }}
-            92% {{ transform: rotate(-10deg); }}
-            94% {{ transform: rotate(12deg); }}
-            96% {{ transform: rotate(-10deg); }}
-            98% {{ transform: rotate(8deg); }}
-        }}
+        @keyframes shake {
+            0%, 90%, 100% { transform: rotate(0); }
+            92% { transform: rotate(-10deg); }
+            94% { transform: rotate(12deg); }
+            96% { transform: rotate(-10deg); }
+            98% { transform: rotate(8deg); }
+        }
 
         /* Статус перенаправления */
-        h1 {{
+        h1 {
             font-size: 20px;
             font-weight: 600;
             letter-spacing: -0.5px;
             margin-bottom: 6px;
             color: var(--text-main);
-        }}
+        }
 
-        .phone-number {{
+        .phone-number {
             font-size: 22px;
             font-weight: 800;
             letter-spacing: 0.5px;
@@ -347,24 +205,24 @@ html_template = """<!DOCTYPE html>
             border-bottom: 2px solid var(--accent-red);
             padding-bottom: 4px;
             text-decoration: none;
-        }}
+        }
 
         /* Гарантия отсутствия синего цвета при клике / переходе по номерам */
-        a, a:hover, a:active, a:visited, a:focus {{
+        a, a:hover, a:active, a:visited, a:focus {
             color: #ffffff !important;
             text-decoration: none;
             outline: none;
-        }}
+        }
 
-        .description {{
+        .description {
             font-size: 14px;
             line-height: 1.6;
             color: var(--text-muted);
             margin-bottom: 32px;
-        }}
+        }
 
         /* Кнопка вызова */
-        .call-btn {{
+        .call-btn {
             display: flex;
             align-items: center;
             justify-content: center;
@@ -384,39 +242,39 @@ html_template = """<!DOCTYPE html>
             cursor: pointer;
             box-shadow: 0 0 20px var(--glow-color);
             transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }}
+        }
 
-        .call-btn:hover {{
+        .call-btn:hover {
             transform: translateY(-3px) scale(1.02);
             background: linear-gradient(135deg, var(--accent-red-hover) 0%, var(--accent-red) 100%);
             box-shadow: 0 8px 25px rgba(227, 6, 19, 0.6);
             color: #ffffff !important;
-        }}
+        }
 
-        .call-btn:active {{
+        .call-btn:active {
             transform: translateY(0) scale(0.98);
             color: #ffffff !important;
-        }}
+        }
 
-        .call-btn svg {{
+        .call-btn svg {
             width: 20px;
             height: 20px;
             fill: currentColor;
-        }}
+        }
 
         /* Анимация точек загрузки */
-        .dots::after {{
+        .dots::after {
             content: '';
             animation: dotty 1.5s infinite steps(4);
-        }}
+        }
 
-        @keyframes dotty {{
-            0% {{ content: ''; }}
-            25% {{ content: '.'; }}
-            50% {{ content: '..'; }}
-            75% {{ content: '...'; }}
-            100% {{ content: ''; }}
-        }}
+        @keyframes dotty {
+            0% { content: ''; }
+            25% { content: '.'; }
+            50% { content: '..'; }
+            75% { content: '...'; }
+            100% { content: ''; }
+        }
     </style>
 </head>
 <body>
@@ -440,14 +298,14 @@ html_template = """<!DOCTYPE html>
         </div>
         
         <h1>Вызов<span class="dots"></span></h1>
-        <div class="phone-number">{phone_display}</div>
+        <div class="phone-number">+375 (29) 641-92-05</div>
         
         <p class="description">
-            {description_text}
+            Мы соединяем вас с BUTIKAVTO Барановичи Тельмана. Если вызов не начался автоматически, пожалуйста, нажмите на кнопку ниже.
         </p>
 
         <!-- Кнопка вызова -->
-        <a href="tel:{phone_raw}" class="call-btn" id="callLink">
+        <a href="tel:+375296419205" class="call-btn" id="callLink">
             <svg viewBox="0 0 24 24">
                 <path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56a.977.977 0 0 0-1.01.24l-2.2 2.2a15.045 15.045 0 0 1-6.59-6.59l2.2-2.21a.96.96 0 0 0 .25-1A11.36 11.36 0 0 1 8.5 4c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1 0 9.39 7.61 17 17 17 .55 0 1-.45 1-1v-3.5c0-.55-.45-1-1-1z"></path>
             </svg>
@@ -457,73 +315,24 @@ html_template = """<!DOCTYPE html>
 
     <script>
         // Функция вызова
-        function triggerCall() {{
-            window.location.href = "tel:{phone_raw}";
-        }}
+        function triggerCall() {
+            window.location.href = "tel:+375296419205";
+        }
 
         // 1. Попытка немедленного вызова при инициализации скрипта
         triggerCall();
 
         // 2. Попытка вызова после полной загрузки документа
-        window.addEventListener('DOMContentLoaded', () => {{
+        window.addEventListener('DOMContentLoaded', () => {
             setTimeout(triggerCall, 150);
-        }});
+        });
 
         // 3. Обработка клика по карточке
-        document.getElementById('card').addEventListener('click', (e) => {{
-            if (!e.target.closest('#callLink')) {{
+        document.getElementById('card').addEventListener('click', (e) => {
+            if (!e.target.closest('#callLink')) {
                 triggerCall();
-            }}
-        }});
+            }
+        });
     </script>
 </body>
 </html>
-"""
-
-# Удаляем старый файл mogilev.html если он существует
-if os.path.exists("./mogilev.html"):
-    try:
-        os.remove("./mogilev.html")
-        print("Removed obsolete file: mogilev.html")
-    except Exception as e:
-        print(f"Error removing mogilev.html: {e}")
-
-links_list = []
-
-# Генерация файлов
-for branch in branches:
-    filename = f"{branch['id']}.html"
-    filepath = os.path.join(".", filename)
-    
-    # Формируем заголовок страницы
-    if branch["is_main"]:
-        title_text = "BUTIKAVTO — Перенаправление на звонок..."
-        desc_text = f"Мы соединяем вас с {branch['name']}. Если вызов не начался автоматически, пожалуйста, нажмите на кнопку ниже."
-    else:
-        title_text = f"BUTIKAVTO {branch['name']} — Перенаправление на звонок..."
-        desc_text = f"Мы соединяем вас с BUTIKAVTO {branch['name']}. Если вызов не начался автоматически, пожалуйста, нажмите на кнопку ниже."
-    
-    content = html_template.format(
-        title=title_text,
-        phone_display=branch["phone_display"],
-        description_text=desc_text,
-        phone_raw=branch["phone_raw"]
-    )
-    
-    with open(filepath, "w", encoding="utf-8") as f:
-        f.write(content)
-    print(f"Generated: {filename} for {branch['name']}")
-    
-    # Собираем ссылки для текстового документа
-    github_url = "https://zangran.github.io/redirect/"
-    if branch["is_main"]:
-        full_url = github_url
-        links_list.append(f"Главная (+375296095740): {full_url}")
-    else:
-        full_url = f"{github_url}{filename}"
-        links_list.append(f"{branch['name']}: {full_url}")
-
-# Создаем файл links.txt со списком всех ссылок
-with open("./links.txt", "w", encoding="utf-8") as f:
-    f.write("\n".join(links_list))
-print("Generated links.txt containing all branch links.")
