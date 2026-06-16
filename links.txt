@@ -17,3 +17,4 @@
 Витебск: https://zangran.github.io/redirect/vitebsk.html
 Барановичи Наконечникова: https://zangran.github.io/redirect/baranovichi-nakonechnikova.html
 Барановичи Тельмана: https://zangran.github.io/redirect/baranovichi-telmana.html
+Бобруйск: https://zangran.github.io/redirect/bobruisk.html
