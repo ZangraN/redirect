@@ -11,3 +11,5 @@
 Молодечно: https://zangran.github.io/redirect/molodechno.html
 Солигорск: https://zangran.github.io/redirect/soligorsk.html
 Гомель: https://zangran.github.io/redirect/gomel.html
+Брест: https://zangran.github.io/redirect/brest.html
+Минск Корженевского: https://zangran.github.io/redirect/minsk-korzhenevskogo.html
