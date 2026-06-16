@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Отключение автоматического определения номеров телефонов на iOS Safari, чтобы избежать синих ссылок -->
+    <meta name="format-detection" content="telephone=no">
     <title>BUTIKAVTO Могилёв Мовчанского — Перенаправление на звонок...</title>
     <!-- Подключаем современные шрифты Outfit и Montserrat для авто-тематики -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -27,6 +29,9 @@
             box-sizing: border-box;
             margin: 0;
             padding: 0;
+            /* Убираем синюю подсветку при клике на мобильных устройствах */
+            -webkit-tap-highlight-color: transparent;
+            -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
         }
 
         body {
@@ -194,11 +199,19 @@
             font-size: 22px;
             font-weight: 800;
             letter-spacing: 0.5px;
-            color: #ffffff;
+            color: #ffffff !important;
             margin-bottom: 24px;
             display: inline-block;
             border-bottom: 2px solid var(--accent-red);
             padding-bottom: 4px;
+            text-decoration: none;
+        }
+
+        /* Гарантия отсутствия синего цвета при клике / переходе по номерам */
+        a, a:hover, a:active, a:visited, a:focus {
+            color: #ffffff !important;
+            text-decoration: none;
+            outline: none;
         }
 
         .description {
@@ -219,7 +232,7 @@
             background: linear-gradient(135deg, var(--accent-red) 0%, #a30009 100%);
             border: none;
             border-radius: 16px;
-            color: #ffffff;
+            color: #ffffff !important;
             font-family: inherit;
             font-size: 16px;
             font-weight: 700;
@@ -235,10 +248,12 @@
             transform: translateY(-3px) scale(1.02);
             background: linear-gradient(135deg, var(--accent-red-hover) 0%, var(--accent-red) 100%);
             box-shadow: 0 8px 25px rgba(227, 6, 19, 0.6);
+            color: #ffffff !important;
         }
 
         .call-btn:active {
             transform: translateY(0) scale(0.98);
+            color: #ffffff !important;
         }
 
         .call-btn svg {
@@ -286,7 +301,7 @@
         <div class="phone-number">+375 (29) 641-97-70</div>
         
         <p class="description">
-            Мы соединяем вас с BUTIKAVTO [Могилёв Мовчанского]. Если вызов не начался автоматически, пожалуйста, нажмите на кнопку ниже.
+            Мы соединяем вас с BUTIKAVTO Могилёв Мовчанского. Если вызов не начался автоматически, пожалуйста, нажмите на кнопку ниже.
         </p>
 
         <!-- Кнопка вызова -->

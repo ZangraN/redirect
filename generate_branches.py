@@ -1,58 +1,111 @@
 import os
 
-# Данные о филиалах
+# Список всех филиалов (включая новые)
 branches = [
+    # Главная страница (по умолчанию)
+    {
+        "id": "index",
+        "name": "автохаусом",
+        "is_main": True,
+        "phone_display": "+375 (29) 609-57-40",
+        "phone_raw": "+375296095740"
+    },
+    # Филиалы
     {
         "id": "polotsk",
         "name": "Полоцк",
+        "is_main": False,
         "phone_display": "+375 (29) 653-57-34",
         "phone_raw": "+375296535734"
     },
     {
         "id": "minsk-rudobelskaya",
         "name": "Минск Рудобельская",
+        "is_main": False,
         "phone_display": "+375 (29) 610-24-84",
         "phone_raw": "+375296102484"
     },
     {
         "id": "pinsk",
         "name": "Пинск",
+        "is_main": False,
         "phone_display": "+375 (44) 703-12-83",
         "phone_raw": "+375447031283"
     },
     {
         "id": "lida-yodki",
         "name": "Лида, Ёдки",
+        "is_main": False,
         "phone_display": "+375 (29) 641-80-86",
         "phone_raw": "+375296418086"
     },
     {
         "id": "mogilev-movchanskogo",
         "name": "Могилёв Мовчанского",
+        "is_main": False,
         "phone_display": "+375 (29) 641-97-70",
         "phone_raw": "+375296419770"
     },
     {
         "id": "borisov",
         "name": "Борисов",
+        "is_main": False,
         "phone_display": "+375 (29) 641-91-48",
         "phone_raw": "+375296419148"
     },
     {
-        "id": "mogilev",
-        "name": "Могилев",
+        "id": "mogilev-gabrovskaya",
+        "name": "Могилев Габровская",
+        "is_main": False,
         "phone_display": "+375 (44) 557-13-07",
         "phone_raw": "+375445571307"
+    },
+    {
+        "id": "grodno-tavlaya",
+        "name": "Гродно Тавлая",
+        "is_main": False,
+        "phone_display": "+375 (44) 519-46-50",
+        "phone_raw": "+375445194650"
+    },
+    {
+        "id": "orsha",
+        "name": "Орша",
+        "is_main": False,
+        "phone_display": "+375 (29) 318-93-28",
+        "phone_raw": "+375293189328"
+    },
+    {
+        "id": "molodechno",
+        "name": "Молодечно",
+        "is_main": False,
+        "phone_display": "+375 (29) 641-57-75",
+        "phone_raw": "+375296415775"
+    },
+    {
+        "id": "soligorsk",
+        "name": "Солигорск",
+        "is_main": False,
+        "phone_display": "+375 (29) 645-42-63",
+        "phone_raw": "+375296454263"
+    },
+    {
+        "id": "gomel",
+        "name": "Гомель",
+        "is_main": False,
+        "phone_display": "+375 (29) 689-62-93",
+        "phone_raw": "+375296896293"
     }
 ]
 
-# HTML Шаблон для каждого филиала
+# HTML Шаблон
 html_template = """<!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BUTIKAVTO {branch_name} — Перенаправление на звонок...</title>
+    <!-- Отключение автоматического определения номеров телефонов на iOS Safari, чтобы избежать синих ссылок -->
+    <meta name="format-detection" content="telephone=no">
+    <title>{title}</title>
     <!-- Подключаем современные шрифты Outfit и Montserrat для авто-тематики -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -76,6 +129,9 @@ html_template = """<!DOCTYPE html>
             box-sizing: border-box;
             margin: 0;
             padding: 0;
+            /* Убираем синюю подсветку при клике на мобильных устройствах */
+            -webkit-tap-highlight-color: transparent;
+            -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
         }}
 
         body {{
@@ -243,11 +299,19 @@ html_template = """<!DOCTYPE html>
             font-size: 22px;
             font-weight: 800;
             letter-spacing: 0.5px;
-            color: #ffffff;
+            color: #ffffff !important;
             margin-bottom: 24px;
             display: inline-block;
             border-bottom: 2px solid var(--accent-red);
             padding-bottom: 4px;
+            text-decoration: none;
+        }}
+
+        /* Гарантия отсутствия синего цвета при клике / переходе по номерам */
+        a, a:hover, a:active, a:visited, a:focus {{
+            color: #ffffff !important;
+            text-decoration: none;
+            outline: none;
         }}
 
         .description {{
@@ -268,7 +332,7 @@ html_template = """<!DOCTYPE html>
             background: linear-gradient(135deg, var(--accent-red) 0%, #a30009 100%);
             border: none;
             border-radius: 16px;
-            color: #ffffff;
+            color: #ffffff !important;
             font-family: inherit;
             font-size: 16px;
             font-weight: 700;
@@ -284,10 +348,12 @@ html_template = """<!DOCTYPE html>
             transform: translateY(-3px) scale(1.02);
             background: linear-gradient(135deg, var(--accent-red-hover) 0%, var(--accent-red) 100%);
             box-shadow: 0 8px 25px rgba(227, 6, 19, 0.6);
+            color: #ffffff !important;
         }}
 
         .call-btn:active {{
             transform: translateY(0) scale(0.98);
+            color: #ffffff !important;
         }}
 
         .call-btn svg {{
@@ -335,7 +401,7 @@ html_template = """<!DOCTYPE html>
         <div class="phone-number">{phone_display}</div>
         
         <p class="description">
-            Мы соединяем вас с BUTIKAVTO [{branch_name}]. Если вызов не начался автоматически, пожалуйста, нажмите на кнопку ниже.
+            {description_text}
         </p>
 
         <!-- Кнопка вызова -->
@@ -372,15 +438,50 @@ html_template = """<!DOCTYPE html>
 </html>
 """
 
+# Удаляем старый файл mogilev.html если он существует
+if os.path.exists("./mogilev.html"):
+    try:
+        os.remove("./mogilev.html")
+        print("Removed obsolete file: mogilev.html")
+    except Exception as e:
+        print(f"Error removing mogilev.html: {e}")
+
+links_list = []
+
 # Генерация файлов
 for branch in branches:
     filename = f"{branch['id']}.html"
     filepath = os.path.join(".", filename)
+    
+    # Формируем заголовок страницы
+    if branch["is_main"]:
+        title_text = "BUTIKAVTO — Перенаправление на звонок..."
+        desc_text = f"Мы соединяем вас с {branch['name']}. Если вызов не начался автоматически, пожалуйста, нажмите на кнопку ниже."
+    else:
+        title_text = f"BUTIKAVTO {branch['name']} — Перенаправление на звонок..."
+        desc_text = f"Мы соединяем вас с BUTIKAVTO {branch['name']}. Если вызов не начался автоматически, пожалуйста, нажмите на кнопку ниже."
+    
     content = html_template.format(
-        branch_name=branch["name"],
+        title=title_text,
         phone_display=branch["phone_display"],
+        description_text=desc_text,
         phone_raw=branch["phone_raw"]
     )
+    
     with open(filepath, "w", encoding="utf-8") as f:
         f.write(content)
     print(f"Generated: {filename} for {branch['name']}")
+    
+    # Собираем ссылки для текстового документа
+    github_url = "https://zangran.github.io/redirect/"
+    if branch["is_main"]:
+        full_url = github_url
+        links_list.append(f"Главная (+375296095740): {full_url}")
+    else:
+        full_url = f"{github_url}{filename}"
+        links_list.append(f"{branch['name']}: {full_url}")
+
+# Создаем файл links.txt со списком всех ссылок
+with open("./links.txt", "w", encoding="utf-8") as f:
+    f.write("\n".join(links_list))
+print("Generated links.txt containing all branch links.")

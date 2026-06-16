@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BUTIKAVTO Могилев — Перенаправление на звонок...</title>
+    <!-- Отключение автоматического определения номеров телефонов на iOS Safari, чтобы избежать синих ссылок -->
+    <meta name="format-detection" content="telephone=no">
+    <title>BUTIKAVTO Молодечно — Перенаправление на звонок...</title>
     <!-- Подключаем современные шрифты Outfit и Montserrat для авто-тематики -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -27,6 +29,9 @@
             box-sizing: border-box;
             margin: 0;
             padding: 0;
+            /* Убираем синюю подсветку при клике на мобильных устройствах */
+            -webkit-tap-highlight-color: transparent;
+            -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
         }
 
         body {
@@ -194,11 +199,19 @@
             font-size: 22px;
             font-weight: 800;
             letter-spacing: 0.5px;
-            color: #ffffff;
+            color: #ffffff !important;
             margin-bottom: 24px;
             display: inline-block;
             border-bottom: 2px solid var(--accent-red);
             padding-bottom: 4px;
+            text-decoration: none;
+        }
+
+        /* Гарантия отсутствия синего цвета при клике / переходе по номерам */
+        a, a:hover, a:active, a:visited, a:focus {
+            color: #ffffff !important;
+            text-decoration: none;
+            outline: none;
         }
 
         .description {
@@ -219,7 +232,7 @@
             background: linear-gradient(135deg, var(--accent-red) 0%, #a30009 100%);
             border: none;
             border-radius: 16px;
-            color: #ffffff;
+            color: #ffffff !important;
             font-family: inherit;
             font-size: 16px;
             font-weight: 700;
@@ -235,10 +248,12 @@
             transform: translateY(-3px) scale(1.02);
             background: linear-gradient(135deg, var(--accent-red-hover) 0%, var(--accent-red) 100%);
             box-shadow: 0 8px 25px rgba(227, 6, 19, 0.6);
+            color: #ffffff !important;
         }
 
         .call-btn:active {
             transform: translateY(0) scale(0.98);
+            color: #ffffff !important;
         }
 
         .call-btn svg {
@@ -283,14 +298,14 @@
         </div>
         
         <h1>Вызов<span class="dots"></span></h1>
-        <div class="phone-number">+375 (44) 557-13-07</div>
+        <div class="phone-number">+375 (29) 641-57-75</div>
         
         <p class="description">
-            Мы соединяем вас с BUTIKAVTO [Могилев]. Если вызов не начался автоматически, пожалуйста, нажмите на кнопку ниже.
+            Мы соединяем вас с BUTIKAVTO Молодечно. Если вызов не начался автоматически, пожалуйста, нажмите на кнопку ниже.
         </p>
 
         <!-- Кнопка вызова -->
-        <a href="tel:+375445571307" class="call-btn" id="callLink">
+        <a href="tel:+375296415775" class="call-btn" id="callLink">
             <svg viewBox="0 0 24 24">
                 <path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56a.977.977 0 0 0-1.01.24l-2.2 2.2a15.045 15.045 0 0 1-6.59-6.59l2.2-2.21a.96.96 0 0 0 .25-1A11.36 11.36 0 0 1 8.5 4c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1 0 9.39 7.61 17 17 17 .55 0 1-.45 1-1v-3.5c0-.55-.45-1-1-1z"></path>
             </svg>
@@ -301,7 +316,7 @@
     <script>
         // Функция вызова
         function triggerCall() {
-            window.location.href = "tel:+375445571307";
+            window.location.href = "tel:+375296415775";
         }
 
         // 1. Попытка немедленного вызова при инициализации скрипта
