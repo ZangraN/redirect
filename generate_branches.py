@@ -148,8 +148,8 @@ branches = [
         "id": "minsk-uborevicha",
         "name": "Минск Уборевича",
         "is_main": False,
-        "phone_display": "+375 (44) 560-22-93",
-        "phone_raw": "+375445602293"
+        "phone_display": "+375 (44) 560-32-87",
+        "phone_raw": "+375445603287"
     },
     {
         "id": "slutsk-lenina",
