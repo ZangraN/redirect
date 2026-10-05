@@ -23,3 +23,4 @@
 Минск, Илимская: https://zangran.github.io/redirect/minsk-ilimskaya.html
 Барановичи Ленина: https://zangran.github.io/redirect/baranovichi-lenina.html
 Новополоцк: https://zangran.github.io/redirect/novopolotsk.html
+Гомель Олимпийская: https://zangran.github.io/redirect/gomel-olimpiyskaya.html

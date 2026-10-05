@@ -178,6 +178,13 @@ branches = [
         "is_main": False,
         "phone_display": "+375 (44) 512-82-49",
         "phone_raw": "+375445128249"
+    },
+    {
+        "id": "gomel-olimpiyskaya",
+        "name": "Гомель Олимпийская",
+        "is_main": False,
+        "phone_display": "+375 (44) 515-62-14",
+        "phone_raw": "+375445156214"
     }
 ]
 
