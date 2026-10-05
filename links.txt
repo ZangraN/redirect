@@ -24,3 +24,4 @@
 Барановичи Ленина: https://zangran.github.io/redirect/baranovichi-lenina.html
 Новополоцк: https://zangran.github.io/redirect/novopolotsk.html
 Гомель Олимпийская: https://zangran.github.io/redirect/gomel-olimpiyskaya.html
+Светлогорск: https://zangran.github.io/redirect/svetlogorsk.html

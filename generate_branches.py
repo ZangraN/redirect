@@ -185,6 +185,13 @@ branches = [
         "is_main": False,
         "phone_display": "+375 (44) 515-62-14",
         "phone_raw": "+375445156214"
+    },
+    {
+        "id": "svetlogorsk",
+        "name": "Светлогорск",
+        "is_main": False,
+        "phone_display": "+375 (44) 513-44-06",
+        "phone_raw": "+375445134406"
     }
 ]
 
