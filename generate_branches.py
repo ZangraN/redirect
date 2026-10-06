@@ -169,8 +169,8 @@ branches = [
         "id": "baranovichi-lenina",
         "name": "Барановичи Ленина",
         "is_main": False,
-        "phone_display": "+375 (44) 516-52-11",
-        "phone_raw": "+375445165211"
+        "phone_display": "+375 (44) 516-52-31",
+        "phone_raw": "+375445165231"
     },
     {
         "id": "novopolotsk",
